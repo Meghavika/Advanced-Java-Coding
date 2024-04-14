@@ -1,26 +1,21 @@
-import java.util.Scanner;
+import java.util.*;
 
-//winner tree (heap)
+//Winner tree heap
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+public class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
         
-        System.out.print("Enter array size: ");
-        int n = s.nextInt();
+        int n=sc.nextInt();
+        int[] arr=new int[n];
         
-        int[] a = new int[n];
-        System.out.println("Enter array elements:");
-        for (int i = 0; i < n; i++) {
-            a[i] = s.nextInt();
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
         }
         
-        // Using Math.max function to find the maximum element
-        int m = a[0];
-        for (int i = 1; i < n; i++) {
-            m = Math.max(m, a[i]);
-        }
+        Arrays.sort(arr);
         
-        System.out.println("Maximum element of the array: " + m);
+        System.out.println("Minimum element is " + arr[0]);
+        System.out.println("Second minimum element is " + arr[1]);
     }
 }
