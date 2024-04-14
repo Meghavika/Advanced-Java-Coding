@@ -1,36 +1,24 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        
-        // Input for the first array
-        int n1 = s.nextInt();
-        int[] a1 = new int[n1];
-        for (int i = 0; i < n1; i++) {
-            a1[i] = s.nextInt();
+public class max_sliding_window{
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        if(n<3){
+            System.out.println("Invalid input. Array size should be at least 3.");
+            return;
         }
-        
-        // Input for the second array
-        int n2 = s.nextInt();
-        int[] a2 = new int[n2];
-        for (int i = 0; i < n2; i++) {
-            a2[i] = s.nextInt();
+        int[] a=new int[n];
+        for(int i=0; i<n; i++){
+            a[i]=sc.nextInt();
         }
-        
-        Arrays.sort(a1);
-        Arrays.sort(a2);
-
-        boolean eq = Arrays.equals(a1, a2);
-        
-        // Printing the result
-        if (eq) {
-            System.out.println("Stack Permutation Possible");
-        } else {
-            System.out.println("Stack Permutation Not Possible");
+        int window=3;
+        for(int i=0; i<n-window+1; i++){
+            int max3=a[i];
+            for(int j=i+1; j<i+window; j++){
+                max3=Math.max(max3, a[j]);
+            }
+            System.out.print(max3+" ");
         }
-        
-        s.close();
     }
 }
